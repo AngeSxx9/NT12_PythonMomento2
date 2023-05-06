@@ -1,38 +1,29 @@
-from escuderias import Escuderia
+from Coctel import Coctel
+from ContelConJugo import CoctelConJugo
+from ShotDeAlcohol import ShotDeAlcohol
 
-escuderias = []
-contador = 1
-numeroEscuderias = int(input("Digite el numero de escuderias: "))
-while contador <= numeroEscuderias:
-    escuderia = Escuderia()
-    escuderia.nombre = input("digite el nombre de la escuderia: ")
-    escuderia.casaMotor = input("digite el nombre del casamotor: ")
-    escuderia.pilotoPrincipal.nombre = input("digita el nombre del piloto: ")
-    escuderia.pilotoPrincipal.salarioAnual = input("digita el salario: ")
-    escuderia.pilotoPrincipal.fechaNacimiento = input(
-        "digita la fecha de nacimiento: ")
-    escuderia.pilotoPrincipal.pais = input("digita el pais: ")
-    escuderia.piloto2.nombre = input("digita el nombre del piloto: ")
-    escuderia.piloto2.salarioAnual = input("digita el salario: ")
-    escuderia.piloto2.fechaNacimiento = input(
-        "digita la fecha de nacimiento: ")
-    escuderia.piloto2.pais = input("digita el pais del piloto: ")
-    escuderia.costos = input("ingrese los costos: ")
+def calcular_costo_venta(self, cantidad):
+        costo = cantidad * self.precio
+        return costo
 
 
-escuderias.append(escuderia)
+def calcular_costo_venta(self, cantidad, dias_anejamiento):
+        if dias_anejamiento == 1:
+            costo = cantidad * self.precio
+        elif dias_anejamiento == 2:
+            costo = cantidad * self.precio * 0.8
+        elif dias_anejamiento == 3:
+            costo = cantidad * self.precio * 0.5
+        else:
+            costo = 0
+        
+        return costo
 
-contador = contador + 1
+coctel_con_jugo = CoctelConJugo("Mojito", 120, 10, "Alta")
+shot = ShotDeAlcohol("Tequila", 50, 40, "Frio")
 
-# Recorriendo la Lista de escuderías
+costo_coctel_con_jugo = coctel_con_jugo.calcular_costo_venta(5, 2)
+costo_shot = shot.calcular_costo_venta(10)
 
-for escuderia in escuderias:
-    print(escuderia.nombre, escuderia.costos)
-
-costoMayor = 0
-nombreEscuderiaMasCara = None
-
-for escuderia in escuderias:
-    if escuderia.costos > costoMayor:
-        costoMayor = escuderia.costos
-        nombreEscuderiaMasCara = escuderia.nombre
+print("Costo de venta del coctel con jugo:", costo_coctel_con_jugo)
+print("Costo de venta del shot:", costo_shot)
